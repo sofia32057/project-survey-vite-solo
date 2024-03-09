@@ -1,0 +1,50 @@
+{
+  "questions": [
+    {
+      "id": "superpower",
+      "type": "text",
+      "question": "If you could have any superpower, what would it be?",
+      "options": [],
+      "answer": ""
+    },
+    {
+      "id": "method",
+      "type": "select",
+      "question": "What is your preferred method of causing chaos and mayhem?",
+      "options": [
+        "Mind control",
+        "Technological manipulation",
+        "Elemental powers (e.g., controlling fire, water, etc.)",
+        "Psychological manipulation",
+        "Creating monsters or mutants"
+      ],
+      "answer": ""
+    },
+    {
+      "id": "lair",
+      "type": "select",
+      "question": "Which of the following evil lairs suits your style best?",
+      "options": [
+        "Secret underground bunker",
+        "Towering fortress atop a mountain",
+        "Abandoned castle in a haunted forest",
+        "High-tech skyscraper in a bustling city"
+      ],
+      "answer": ""
+    },
+    {
+      "id": "worlddom",
+      "type": "radio",
+      "question": "Do you strive for world domination",
+      "options": ["Yes!", "No, I'm focusing on my local market"],
+      "answer": ""
+    },
+    {
+      "id": "svs",
+      "type": "checkbox",
+      "question": "Can we send you some information about Super Villain Society?",
+      "options": [],
+      "answer": ""
+    }
+  ]
+}
