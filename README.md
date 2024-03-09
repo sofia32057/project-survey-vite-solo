@@ -24,7 +24,17 @@ npm i && code . && npm run dev
 
 ### The Problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with creating components corresponding with the design inspiration in Figma.
+Focusing on a component for Inputs (including selects) i tried writing as DRY as possible.
+I got stuck in displaying the updated state, since the answers don't belong in the input component.
+
+After reading the instructions again, I realized components was a bit overkill, and decided to move up to the Form component instead. Now it seems to work, and I should do some styling to see if it's enough...
+
+#### Next step
+
+- Styling
+- Displaying answers after submit
+- Then stretch...
 
 ### View it live
 
