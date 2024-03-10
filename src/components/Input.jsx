@@ -8,7 +8,7 @@ export const Input = ({ q }) => {
   // console.log("Question", q, test);
   // console.log("Answer", answer);
 
-  const handleInput = event => {
+  const handleChange = event => {
     console.log(event);
     const { value, type, checked } = event.target
     const newValue = checked ? checked : value
@@ -23,7 +23,7 @@ export const Input = ({ q }) => {
         <select
           name={id}
           value={answer}
-          onChange={handleInput}>
+          onChange={handleChange}>
           <option
             disabled
             // selected
@@ -46,7 +46,7 @@ export const Input = ({ q }) => {
                         type={type}
                         name={id}
                         value={answer}
-                        onChange={handleInput}
+                        onChange={handleChange}
                       />{" "}
                       {op}
                     </label>
@@ -60,7 +60,7 @@ export const Input = ({ q }) => {
               type={type}
               name={id}
               value={answer}
-              onChange={handleInput}
+              onChange={handleChange}
             />
           )}
         </Fragment>

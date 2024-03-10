@@ -4,44 +4,61 @@ import { useState } from "react";
 import { Fragment } from "react";
 
 export const Form = () => {
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState({
+    "superpower": "",
+    "method": "Select",
+    "lair": "Select", 
+    "worlddom": "No",
+    "svs": false
+  });
   // console.log("Question", q, test);
-  // console.log("Answer", answer);
+  console.log("Answer", answer);
 
-  const handleInput = event => {
+  const handleChange = event => {
     console.log(event);
-    const { value, type, checked } = event.target
-    const newValue = checked ? checked : value
-    setAnswer(newValue);
-    storeState(event.target).answer = answer;
+    const { name, value, type, checked } = event.target
+    const newAnswer = type === "checkbox" ? answerString : value
+    setAnswer({...answer, [name]: newAnswer});
+    // storeState(event.target).answer = answer;
     // console.log("Answer", answer)
   };
 
-  const storeState = (target) => {
-    return questions.find(q => q.id === target.name);
+  // const storeState = (target) => {
+  //   return questions.find(q => q.id === target.name);
+  // };
+
+  const answerString = answer ? "Yes" : "No";
+
+  // Event handler for form submission
+  const handleSubmit = event => {
+    console.log(event);
+    event.preventDefault();
+    // Process the form data here
+    console.log('Form Data:', answer)
   };
 
   console.log("Questions", { questions });
   return (
     <form>
-      {questions.map(q => { 
-        const { id, type, question, options, answer: defaultAnswer } = q;
+      {questions.map((q, i) => { 
+        const { id, type, question, options } = q;
         return (
           <label key={id}>
-            {question}
+            <span>{i + 1}</span>
+            {// The questions as label
+            question} 
             {type === "select" ? ( // If questions should be a 'select'
               <select
+              required
                 name={id}
-                value={answer}
-                onChange={handleInput}>
+                value={answer.id}
+                onChange={handleChange}>
                 <option
-                  disabled
-                  // selected
-                  value="">
+                  value="Select">
                   Select
                 </option>
-                {options.map((op, i) => { // Map and create options
-                  return <option key={i} value={op}>{op}</option>;
+                {options.map((op) => { // Map and create options
+                  return <option key={op} value={op}>{op}</option>;
                 })}
               </select>
             ) : (
@@ -55,8 +72,8 @@ export const Form = () => {
                             <input
                               type={type}
                               name={id}
-                              value={answer}
-                              onChange={handleInput}
+                              value={op}
+                              onChange={handleChange}
                             />{" "}
                             {op}
                           </label>
@@ -69,8 +86,8 @@ export const Form = () => {
                   <input
                     type={type}
                     name={id}
-                    value={answer}
-                    onChange={handleInput}
+                    value={answer.id}
+                    onChange={handleChange}
                   />
                 )}
               </Fragment>
@@ -79,9 +96,7 @@ export const Form = () => {
         );
       })}
 
-      <Button />
-      <p>Current state is {answer}</p>
-      <ul>{questions.map((q, i) => <li key={i}>{q.answer}</li>)}</ul>
+      <Button onClick={handleSubmit} />
     </form>
   );
 };

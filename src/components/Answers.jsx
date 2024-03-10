@@ -1,3 +1,3 @@
 export const Answers = ({answer}) => {
-<p>{answer}</p>
+<p>TEST</p>
 };
