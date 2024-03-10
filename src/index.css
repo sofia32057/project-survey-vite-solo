@@ -5,6 +5,21 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --font-size: 16px;
+  --primary-color: #581f97;
+  --lighter-color: #591f974f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+#root {
+  font-size: var(--font-size);
+  gap: 1rem;
 }
 
 code {
@@ -12,8 +27,113 @@ code {
     monospace;
 }
 
+#root,
+header,
+main,
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 200px;
+}
+
+header, 
+button {
+  background-color: var(--primary-color);
+  color: whitesmoke;
+  text-align: center;
+  letter-spacing: -0.019em;
+}
+
+main {
+  padding: 20px;
+}
+
+form {
+  max-width: 480px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+h2,
+label,
+button {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  padding: 10px 10px 10px 0;
+}
+
+/* p {
+  width: 100%;
+} */
 
 form > label {
   padding-bottom: 20px;
+  color: var(--primary-color);
+  width: 100%;
+}
+
+label span {
   display: block;
+}
+
+label span::after {
+  content: ". ";
+}
+
+fieldset {
+  border: none;
+}
+
+input[type="text"],
+select,
+button {
+  border: 1px solid #000000;
+  height: 60px;
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  transition: all 0.2s ease-in;
+  display: block;
+  font-size: var(--font-size);
+}
+
+input[type="checkbox"] {
+  margin: 10px;
+}
+
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+  accent-color: var(--primary-color);
+}
+
+input[type="text"]:hover,
+select:hover,
+button:hover {
+  background-color: var(--lighter-color);
+  color: var(--primary-color);
+}
+
+button:invalid {
+  background-color: grey;
+}
+
+@media all and (min-width: 668) {
+  /* Tablets */
+}
+
+@media all and (min-width: 1024) {
+  /* Desktops */
 }
