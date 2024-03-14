@@ -3,7 +3,7 @@ import { questions } from "../questions.json";
 import { useState } from "react";
 import { Fragment } from "react";
 
-export const Form = () => {
+export const Form = ({eventHandler}) => {
   const [answer, setAnswer] = useState({
     "superpower": "",
     "method": "Select",
@@ -11,30 +11,19 @@ export const Form = () => {
     "worlddom": "No",
     "svs": false
   });
-  // console.log("Question", q, test);
-  console.log("Answer", answer);
-
-  const handleChange = event => {
-    console.log(event);
-    const { name, value, type, checked } = event.target
-    const newAnswer = type === "checkbox" ? answerString : value
-    setAnswer({...answer, [name]: newAnswer});
-    // storeState(event.target).answer = answer;
-    // console.log("Answer", answer)
-  };
-
-  // const storeState = (target) => {
-  //   return questions.find(q => q.id === target.name);
-  // };
 
   const answerString = answer ? "Yes" : "No";
 
+  const handleChange = event => {
+    const { name, value, type } = event.target
+    const newAnswer = type === "checkbox" ? answerString : value
+    setAnswer({...answer, [name]: newAnswer});
+  };
+
   // Event handler for form submission
   const handleSubmit = event => {
-    console.log(event);
     event.preventDefault();
-    // Process the form data here
-    console.log('Form Data:', answer)
+    eventHandler(answer)
   };
 
   console.log("Questions", { questions });
@@ -62,7 +51,7 @@ export const Form = () => {
                 })}
               </select>
             ) : (
-              <Fragment>
+              <>
                 {options.length > 0 ? ( // If questions should not be a select, but have more than one option
                   <fieldset name={id}>
                     {options.map((op, i) => { // Map options into their own inputs
@@ -74,8 +63,7 @@ export const Form = () => {
                               name={id}
                               value={op}
                               onChange={handleChange}
-                            />{" "}
-                            {op}
+                            /> {op}  
                           </label>
                         </Fragment>
                       );
@@ -90,12 +78,11 @@ export const Form = () => {
                     onChange={handleChange}
                   />
                 )}
-              </Fragment>
+              </>
             )}
           </label>
         );
       })}
-
       <Button onClick={handleSubmit} />
     </form>
   );
